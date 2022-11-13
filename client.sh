@@ -7,7 +7,7 @@ echo "Cliente HMTP"
 
 echo "(1) SEND - ENVIANDO EL HANDSHAKE"
 
-echo "GREEN POWA $IP_LOCAL" | nc $IP_SERVER $PORT
+echo "GREEN_POWA $IP_LOCAL" | nc $IP_SERVER $PORT
 
 echo "(2) LISTEN - Esuchando confirmacion"
 
@@ -21,9 +21,9 @@ fi
 echo "(5) SEND - filename (enviem el nom del arxiu)"
 FILENAME="meme.jpg"
 
-echo "FILENAME $filename" | nc $IP_SERVER $PORT
+echo "FILE_NAME $FILENAME" | nc $IP_SERVER $PORT
 
-echo "(6) LISTEN - Escoltant confirmacio del arxiu"   
+echo "(6) LISTEN - Escoltant confirmacio del arxiu"
 MSG=`nc -l $PORT`
 
 exit 0
