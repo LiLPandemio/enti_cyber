@@ -8,13 +8,13 @@ echo "(0) Listen"
 MSG=`nc -l $PORT`
 
 HANDSHAKE=`echo $MSG | cut -d " " -f 1`
-IP_CLIENT= `echo $MSG  | cut -d " " -f 2`
+IP_CLIENT=`echo $MSG | cut -d " " -f 2`
 
 echo "(3) Send - Confirmación Handshake"
 
 if [ "$HANDSHAKE" != "GREEN_POWA" ]
 then
-	echo "KO_HMTP" | nc $IP_CLIENT $port
+	echo "KO_HMTP" | nc $IP_CLIENT $PORT
 	exit 1
 fi
 
@@ -25,7 +25,7 @@ MSG=`nc -l $PORT`
 
 echo "$MSG"
 PREFIX=`echo $MSG | cut -d " " -f 1`
-COMPROVACIO=`echo $MSG | cut -d " " -f 2` 
+COMPROVACIO=`echo $MSG | cut -d " " -f 2`
 
 
 echo "(7) SEND - Confirmación del nombre del archivo"
@@ -38,7 +38,7 @@ fi
 
 echo "OK_FILE_NAME" | nc $IP_CLIENT $PORT
 
-echo "(8) LISTEN -Escuchando datos de archivo"
+echo "(8) LISTEN - Escuchando datos de archivo"
 
 MSG=`nc -l $PORT`
 
