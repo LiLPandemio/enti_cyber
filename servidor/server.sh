@@ -32,7 +32,7 @@ echo "(7) SEND - Confirmación del nombre del archivo"
 
 if [ $PREFIX != "FILE_NAME" ]
 then
-	echo "KO0_HMTP" | nc $IP_CLIENT
+	echo "KO_HMTP" | nc $IP_CLIENT
 	exit 2
 fi
 
@@ -40,6 +40,13 @@ echo "OK_FILE_NAME" | nc $IP_CLIENT $PORT
 
 echo "(8) LISTEN - Escuchando datos de archivo"
 
-MSG=`nc -l $PORT`
+FILENAME=`nc -l $PORT | cut -d " " -f 2`
+nc -l $PORT > uploads/$FILENAME
+if [`md5sum uploads/$FILENAME`==`nc -l $PORT | cut -d " " -f 2`]
+then
+echo "OK_DATA_MD5" | nc $IP_CLIENT $PORT
+else
+echo "KO_DATA_MD5" | nc $IP_CLIENT $PORT
+fi
 
 exit 0
