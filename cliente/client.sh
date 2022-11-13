@@ -24,7 +24,11 @@ MD5FILESUM=`md5sum $FILENAME | cut -d " " -f 1`
 FILECONTENT=`cat $FILENAME`
 
 echo "FILE_NAME $FILENAME" | nc $IP_SERVER $PORT
-cat "$FILECONTENT" | nc $IP_SERVER $PORT
+
+#Serve the file
+{echo -ne "HTTP/1.0 200 OK\r\n\r\n"; cat "$file" ;} | nc  -l "$PORT"
+
+
 echo "FILE_HASH $MD5FILESUM" | nc $IP_SERVER $PORT
 
 echo "(6) LISTEN - Escoltant confirmacio del arxiu"
