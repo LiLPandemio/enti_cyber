@@ -60,13 +60,11 @@ class Game:
         self.player = None
         self.current_enemy = None
         self.enemies = []
-        self.isGameSaved = False
         self.savemethod = None
 
     def newGame(self):
         self.loadEnemies()
         self.player = Player(name=None, damage=1000, health=30000)
-        self.isGameSaved = False
         self.savemethod = "XML" if input("Elige formato de guardado:\n1. XML\n2. JSON\n[1 | 2]: ") == "1" else "JSON"
         self.deleteSaveGame(self.savemethod)
         if self.enemies:
