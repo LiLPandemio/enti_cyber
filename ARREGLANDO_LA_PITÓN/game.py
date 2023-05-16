@@ -287,6 +287,7 @@ class Game:
                 print("\033[35mJugador: {} \033[0m| \033[32mVida: {} \033[0m| \033[31mDaño: {}\033[0m".format(self.player.name, self.player.health, self.player.damage))
             if self.current_enemy:
                 print("\033[31mEnemigo: {} \033[0m| \033[35mVida: {} \033[0m| \033[31mDaño: {}\033[0m".format(self.current_enemy.name, self.current_enemy.health, self.current_enemy.damage))
+                print("\033[33m{}\033[0m".format(self.current_enemy.description))
             self.saveGame(self.savemethod)
         if self.player.health <= 0:
             print("Has perdido. ¡Game Over!")
@@ -309,13 +310,14 @@ class Game:
             last_game_username=save_data["playerStats"]["name"]
             savegame_exists = True
             print("2. Cargar partida (JSON) [{}]".format(last_game_username))
+        else:
+            savegame_exists = False
         if os.path.exists("./savegame.xml"):
             xml_save_data = game.readSaveGame("XML")
             xml_save_data_exists = True
             last_xml_game_username=xml_save_data["playerStats"]["name"]
             print("3. Cargar partida (XML) [{}]".format(last_xml_game_username))
         else:
-            savegame_exists = False
             xml_save_data_exists = False
         
         choice = input("Elige una opción: ")
