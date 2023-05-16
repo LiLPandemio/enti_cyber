@@ -7,6 +7,7 @@
 .*.swp
 .*.swo
 .*.swx
+.*.tmp
 
 # Archivos de guardado de juegos
 *savegame*
