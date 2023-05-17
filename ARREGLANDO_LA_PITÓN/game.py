@@ -251,6 +251,12 @@ class Game:
                     sys.exit(0)
 
     def playerTurn(self):
+        if self.player:
+                print("\033[35mJugador: {} \033[0m| \033[32mVida: {} \033[0m| \033[31mDaño: {}\033[0m".format(self.player.name, self.player.health, self.player.damage))
+        if self.current_enemy:
+            print("\033[31mEnemigo: {} \033[0m| \033[35mVida: {} \033[0m| \033[31mDaño: {}\033[0m".format(self.current_enemy.name, self.current_enemy.health, self.current_enemy.damage))
+            print("\033[33m{}\033[0m".format(self.current_enemy.description))
+
         print("\n¡Es tu turno, jugador {}!".format(self.player.name))
         print("1. Atacar")
         print("2. Guardar partida y salir")
@@ -282,12 +288,6 @@ class Game:
         while self.player.health > 0 and (self.current_enemy or self.enemies):
             self.playerTurn()
             self.enemyTurn()
-
-            if self.player:
-                print("\033[35mJugador: {} \033[0m| \033[32mVida: {} \033[0m| \033[31mDaño: {}\033[0m".format(self.player.name, self.player.health, self.player.damage))
-            if self.current_enemy:
-                print("\033[31mEnemigo: {} \033[0m| \033[35mVida: {} \033[0m| \033[31mDaño: {}\033[0m".format(self.current_enemy.name, self.current_enemy.health, self.current_enemy.damage))
-                print("\033[33m{}\033[0m".format(self.current_enemy.description))
             self.saveGame(self.savemethod)
         if self.player.health <= 0:
             print("Has perdido. ¡Game Over!")

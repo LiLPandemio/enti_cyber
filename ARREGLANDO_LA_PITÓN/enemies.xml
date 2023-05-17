@@ -19,9 +19,27 @@
 		<description>Si te descuidas te desconecta la pantalla</description>
 	</enemy>
 	<enemy>
+		<name>ATY</name>
+		<damage>5000</damage>
+		<health>200</health>
+		<description>Si te descuidas te mete la rubber ducky o otra cosa 🥵</description>
+	</enemy>
+	<enemy>
 		<name>Erik</name>
 		<damage>2000</damage>
 		<health>4000</health>
 		<description>Es gitano.</description>
+	</enemy>
+	<enemy>
+		<name>Inogue Salvaje</name>
+		<damage>2000</damage>
+		<health>4000</health>
+		<description>Toma aquarius y saca dieces...</description>
+	</enemy>
+	<enemy>
+		<name>Bowser</name>
+		<damage>300</damage>
+		<health>4000</health>
+		<description>Peaches peaches peaches peaches peaches peaches peaches peaches peaches peaches peaches peaches peaches peaches peaches peaches peaches.</description>
 	</enemy>
 </enemies>
