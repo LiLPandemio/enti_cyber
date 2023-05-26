@@ -39,17 +39,17 @@ h3,
 h4,
 h5,
 h6 {
-    border-bottom: 3px solid white;
+    border-bottom: 3px solid #37416E;
 }
 
 dt {
     margin-top: 5px;
-    border-bottom: 1px solid #666;
+    border-bottom: 1px solid #37416E;
     color: #fff;
 }
 
 dd {
-    border-left: 1px solid #666;
+    border-left: 1px solid #37416E;
     padding-left: 10px;
     color: #aaa;
 }
@@ -112,6 +112,33 @@ dd {
     text-align: left;
     padding-left: 15%;
     padding-right: 5%;
+}
+
+/* Un elemento sencillo que se ve como un boton. */
+.badge {
+    margin-right: 10px;
+    margin-top: 10px;
+    display: inline-block;
+    padding: 0.25em 0.5em;
+    font-size: 0.75rem;
+    font-weight: 700;
+    line-height: 1;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: 0.25rem;
+    background-color: #37416E;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+
+.icon-xl {
+    font-size: 160%;
+    position: relative;
+    top: 5px;
 }
 
 /* Una flecha blanca que parpadea */
@@ -183,6 +210,7 @@ dd {
     color: #8b0e17;
     text-decoration: underline;
 }
+
 /* ========================== ================================= ========================== */
 /* ========================== Reglas para pantallas responsive  ========================== */
 /* ========================== ================================= ========================== */
