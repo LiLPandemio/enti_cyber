@@ -9,48 +9,7 @@
     <title>LiLPandemio</title>
     <link rel="stylesheet" href="./src/css/styles.css">
     <link rel="stylesheet" href="./src/css/index.css">
-    <script>
-        function getRandomKanji() {
-  // Array de caracteres kanji japoneses
-  var kanjiChars = ['漢', '字', '日', '本', '語', '例', '文', '中', '化'];
-
-  // Obtener un carácter kanji aleatorio del array
-  var randomIndex = Math.floor(Math.random() * kanjiChars.length);
-  return kanjiChars[randomIndex];
-}
-
-function animateMatrixText() {
-  var originalText = "Software dev, sysadmin, and hacker (Sometimes ethical)";
-  var matrixText = document.getElementById("matrix-text");
-  var currentText = matrixText.innerHTML;
-  var newText = "";
-
-  // Reemplazar caracteres individuales con kanjis aleatorios
-  for (var i = 0; i < originalText.length; i++) {
-    if (originalText[i] !== " ") {
-      if (Math.random() < 0.5) {
-        newText += currentText[i];
-      } else {
-        newText += getRandomKanji();
-      }
-    } else {
-      newText += " ";
-    }
-  }
-
-  // Actualizar el contenido del elemento HTML
-  matrixText.innerHTML = newText;
-
-  // Restaurar el texto original después de 1000 milisegundos (1 segundo)
-  setTimeout(function() {
-    matrixText.innerHTML = originalText;
-  }, 1100);
-}
-
-// Ejecutar la animación cada 100 milisegundos
-setInterval(animateMatrixText, 1000);
-
-    </script>
+    <script src="./src/js/script.js"></script>
 </head>
 
 <body>
@@ -123,7 +82,8 @@ setInterval(animateMatrixText, 1000);
     </div>
     <hr>
     <div class="row" style="padding-left: 30px;padding-right: 30px;">
-        <div class="column"></div>
+        <div id="errors" class="column">
+        </div>
 
         <div class="column">
             <h2>Contacto:</h2>
@@ -394,7 +354,7 @@ setInterval(animateMatrixText, 1000);
                         rows="10"></textarea>
                 </div>
             </form>
-            <button style="width: 100%;" onclick="console.log('a')" class="forminput">Enviar</button>
+            <button style="width: 100%;" onclick="checkForm()" class="forminput">Enviar</button>
         </div>
         <div class="column"></div>
     </div>

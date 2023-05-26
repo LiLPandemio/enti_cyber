@@ -162,6 +162,28 @@ dd {
     padding: 15px;
 }
 
+.alert-error {
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-bottom: 5px;
+    border: 1px solid #dc3545;
+    border-radius: 5px;
+    color: #dc3545;
+    background-color: #f8d7da;
+}
+
+.alert-error strong {
+    font-weight: bold;
+}
+
+.alert-error a {
+    color: #dc3545;
+}
+
+.alert-error a:hover {
+    color: #8b0e17;
+    text-decoration: underline;
+}
 /* ========================== ================================= ========================== */
 /* ========================== Reglas para pantallas responsive  ========================== */
 /* ========================== ================================= ========================== */
