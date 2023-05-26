@@ -114,12 +114,11 @@ dd {
     padding-right: 5%;
 }
 
-/* Un cuadrado blanco que parpadea */
+/* Una flecha blanca que parpadea */
 .arrow {
-    width: 20px;
-    height: 20px;
-    background-color: white;
-    margin-bottom: 10px;
+    width: 40px;
+    height: 40px;
+    margin-bottom: 0px;
     opacity: 0.5;
     animation: blink 1.5s infinite;
 }
@@ -221,7 +220,7 @@ dd {
     animation: matrix-animation 1s infinite;
 }
 
-/* Anima los cuadraditos para que indiquen la posibilidad de bajar */
+/* Anima las flechitas para que indiquen la posibilidad de bajar */
 @keyframes blink {
     0% {
         opacity: 0.5;
