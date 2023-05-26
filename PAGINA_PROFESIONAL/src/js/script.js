@@ -129,8 +129,18 @@ function checkForm() {
   // Enviar los datos en formato JSON a la dirección de acción del formulario
   var jsonData = JSON.stringify(formData);
   var action = form.getAttribute("action");
-  // Aquí puedes realizar una solicitud AJAX o cualquier otra acción con los datos JSON
 
+  var xhr = new XMLHttpRequest();
+  xhr.open("POST", "form.php", true);
+  xhr.setRequestHeader("Content-Type", "application/json");
+  xhr.onreadystatechange = function () {
+    if (xhr.readyState === 4 && xhr.status === 200) {
+      console.log("Datos enviados correctamente");
+    } else {
+        addErrorAlert("Algo ha salido mal al procesar tus datos")
+    }
+  };
+  xhr.send(JSON.stringify(jsonData));
   // Opcionalmente, puedes mostrar los datos enviados en la consola
   console.log(jsonData);
 
