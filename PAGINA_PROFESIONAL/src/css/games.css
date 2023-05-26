@@ -1,0 +1,150 @@
+/* ================================= =============== ================================= */
+/* ================================= Reglas globales ================================= */
+/* ================================= =============== ================================= */
+
+* {
+    max-width: 100vw;
+    overflow-x: hidden;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+/* Elimina todos los bordes y establece de forma global reglas para un tema oscuro */
+body,
+html {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    background-color: #222;
+    scroll-behavior: smooth;
+    color: #eee
+}
+
+/* Los textos han de ser blancos para que se vean en fondos oscuros */
+p {
+    color: #aaa
+}
+
+/* Los textos han de ser blancos para que se vean en fondos oscuros, los titulos tienen un blanco mas brillante */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: #fff;
+}
+
+h2,
+h3,
+h4,
+h5,
+h6 {
+    border-bottom: 3px solid #37416E;
+}
+
+dt {
+    margin-top: 5px;
+    border-bottom: 1px solid #37416E;
+    color: #fff;
+}
+
+dd {
+    border-left: 1px solid #37416E;
+    padding-left: 10px;
+    color: #aaa;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+#titulo {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+input[type="text"],
+button {
+    margin-bottom: 10px;
+    margin: 10px;
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 150%;
+}
+
+
+/* =================================== =============== =================================== */
+/* ================================= Clases principales ================================= */
+/* =================================== =============== =================================== */
+
+/* Limpia los elementos flotantes dentro de un contenedor .row para una correcta visualización del diseño. */
+.row::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+.center {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Permite que los elementos se envuelvan cuando no hay suficiente espacio */
+.row {
+    display: flex;
+    flex-direction: row;
+}
+
+/* Las columnas ocuparan todo el ancho disponible en una sola línea.* */
+.column {
+    /* Ocupa todo el ancho disponible en una sola línea */
+    display: flex;
+    flex-direction: column;
+    padding: 30px;
+    width: 100%;
+}
+
+.forminput {
+    background-color: #222;
+    border-radius: 5px;
+    border-color: #eee;
+    color: #eee;
+    width: 98%;
+    align-self: center;
+    padding: 15px;
+}
+
+
+/* Agrega estos estilos al final de tu archivo CSS */
+
+/* Media queries para dispositivos iPhone */
+@media only screen and (max-width: 414px) {
+    body {
+      font-size: 14px;
+      width: 100vh;
+    }
+    
+    .row {
+        display: flex;
+        flex-direction: column;
+    }
+
+    h1 {
+      font-size: 24px;
+    }
+    
+    input[type="text"],
+    button {
+      font-size: 16px;
+    }
+  }

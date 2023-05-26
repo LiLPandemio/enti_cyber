@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Juego de Adivinanzas</title>
+    <link rel="stylesheet" href="./src/css/games.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <script src="./src/js/games.js"></script>
+</head>
+
+<body>
+    <div class="row">
+        <div class="column center">
+
+            <h1 id="titulo"></h1>
+            <input class="forminput" type="text" id="respuesta" placeholder="Introduce tu respuesta">
+            <br>
+            <div class="row" style="width: 100%;">
+                <button class="forminput" onclick="comprobarRespuesta()">✅ Probar respuesta</button>
+                <button class="forminput" onclick="cambiarAdivinanza()">💩 Cambiar pregunta</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        cargarAdivinanzas();
+    </script>
+</body>
+
+</html>

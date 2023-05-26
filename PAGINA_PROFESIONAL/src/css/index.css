@@ -1,0 +1,446 @@
+/* ================================= =============== ================================= */
+/* ================================= Reglas globales ================================= */
+/* ================================= =============== ================================= */
+
+* {
+    max-width: 100vw;
+    overflow-x: hidden;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+/* Elimina todos los bordes y establece de forma global reglas para un tema oscuro */
+body,
+html {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    background-color: #222;
+    scroll-behavior: smooth;
+    color: #eee
+}
+
+/* Los textos han de ser blancos para que se vean en fondos oscuros */
+p {
+    color: #aaa
+}
+
+/* Los textos han de ser blancos para que se vean en fondos oscuros, los titulos tienen un blanco mas brillante */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: #fff;
+}
+
+h2,
+h3,
+h4,
+h5,
+h6 {
+    border-bottom: 3px solid #37416E;
+}
+
+dt {
+    margin-top: 5px;
+    border-bottom: 1px solid #37416E;
+    color: #fff;
+}
+
+dd {
+    border-left: 1px solid #37416E;
+    padding-left: 10px;
+    color: #aaa;
+}
+
+/* =================================== =============== =================================== */
+/* ================================= Clases principales ================================= */
+/* =================================== =============== =================================== */
+
+/* Permite que los elementos se envuelvan cuando no hay suficiente espacio */
+.row {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+/* Limpia los elementos flotantes dentro de un contenedor .row para una correcta visualización del diseño. */
+.row::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+/* Las columnas ocuparan todo el ancho disponible en una sola línea.* */
+.column {
+    /* Ocupa todo el ancho disponible en una sola línea */
+    flex: 1 0 100%;
+    padding: 10px;
+}
+
+/* Hace que un elemento cover ocupe toda la pantalla. Tenga de fondo la imagen especificada y no tenga overflow */
+#cover {
+    width: 100%;
+    height: 100%;
+    background-image: url('../images/backg_main.jpg');
+    background-size: cover;
+    background-position: center;
+    overflow: hidden;
+    /* Permite el desplazamiento vertical si es necesario */
+}
+
+/* Aplica una sombra de texto a todos los elementos dentro del elemento con el ID "cover" y los muestra en una disposición vertical */
+#cover * {
+    text-shadow: 1px 1px 3px black;
+    display: flex;
+    flex-direction: column;
+}
+
+/* hace que el elemento sea tan alto como la ventana */
+.maxheight {
+    /* 100% de la altura de la ventana */
+    height: 100vh;
+}
+
+/* Centra verticalmente y alinea a la izquierda un div con ancho del 100%. */
+.center-div {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    text-align: left;
+    padding-left: 15%;
+    padding-right: 5%;
+}
+
+/* Un elemento sencillo que se ve como un boton. */
+.badge {
+    margin-right: 10px;
+    margin-top: 10px;
+    display: inline-block;
+    padding: 0.25em 0.5em;
+    font-size: 0.75rem;
+    font-weight: 700;
+    line-height: 1;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: 0.25rem;
+    background-color: #37416E;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+
+.icon-xl {
+    font-size: 160%;
+    position: relative;
+    top: 5px;
+}
+
+/* Una flecha blanca que parpadea */
+.arrow {
+    width: 40px;
+    height: 40px;
+    margin-bottom: 0px;
+    opacity: 0.5;
+    animation: blink 1.5s infinite;
+}
+
+/* El contenedor de los cuadrados blancos */
+.arrow-container {
+    display: flex;
+    align-self: flex-end;
+    flex-grow: 1;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* =================================== =============== =================================== */
+/* ===================================== Formularios  ==================================== */
+/* =================================== =============== =================================== */
+
+/* Establece el diseño vertical para el formulario y sus elementos. */
+.contactform {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Dan estilo a los campos de los formularios */
+.form-field {
+    padding-bottom: 20px;
+    display: flex;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+}
+
+.forminput {
+    background-color: #222;
+    border-radius: 5px;
+    border-color: #eee;
+    color: #eee;
+    width: 98%;
+    align-self: center;
+    padding: 15px;
+}
+
+.alert-error {
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-bottom: 5px;
+    border: 1px solid #dc3545;
+    border-radius: 5px;
+    color: #dc3545;
+    background-color: #f8d7da;
+}
+
+.alert-error strong {
+    font-weight: bold;
+}
+
+.alert-error a {
+    color: #dc3545;
+}
+
+.alert-error a:hover {
+    color: #8b0e17;
+    text-decoration: underline;
+}
+
+/* ========================== ================================= ========================== */
+/* ========================== Reglas para pantallas responsive  ========================== */
+/* ========================== ================================= ========================== */
+
+/* Aplica estilos a las columnas cuando el ancho de la pantalla es mayor o igual al especificado en min-width. */
+@media screen and (min-width: 600px) {
+    .column {
+        flex: 1 0 30%;
+    }
+}
+
+
+/* ============================= ======================== ================================ */
+/* =============================  Reglas para animaciones ================================ */
+/* ============================= ======================== ================================ */
+
+/* Animacion del texto con kenjis japonese */
+@keyframes matrix-animation {
+    0% {
+        content: "";
+    }
+
+    100% {
+        content: attr(data-content);
+    }
+}
+
+/* Estilo del texto animado */
+#matrix-text {
+    font-family: monospace;
+    font-size: 20px;
+    color: #eee;
+    /* white-space: nowrap; */
+    /* overflow: hidden; */
+    animation: matrix-animation 1s infinite;
+}
+
+/* Anima las flechitas para que indiquen la posibilidad de bajar */
+@keyframes blink {
+    0% {
+        opacity: 0.5;
+    }
+
+    16.666% {
+        opacity: 1;
+    }
+
+    33.333% {
+        opacity: 0.5;
+    }
+
+    50% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+/* Da delay a la animacion para que indique que baje */
+.arrow1 {
+    animation-delay: 0s;
+}
+
+/* Da delay a la animacion para que indique que baje */
+.arrow2 {
+    animation-delay: 0.5s;
+}
+
+/* Da delay a la animacion para que indique que baje */
+.arrow3 {
+    animation-delay: 1s;
+}
+
+/* Animacion de la imagen de perfil */
+.glitch {
+    position: relative;
+    overflow: hidden;
+}
+
+/* Animacion de la imagen de perfil */
+.glitch img {
+    position: relative;
+    z-index: 1;
+    display: block;
+}
+
+/* Animacion de la imagen de perfil */
+.glitch__layers {
+    position: absolute;
+    z-index: 2;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+}
+
+/* Animacion de la imagen de perfil */
+.glitch__layer {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background-image: url("../images/me.jpg");
+    background-repeat: no-repeat;
+    background-position: 0 0;
+}
+
+/* Animacion de la imagen de perfil */
+.glitch__layer:nth-child(1) {
+    transform: translateX(-5%);
+    animation: glitch-anim-1 2s infinite linear alternate;
+}
+
+/* Animacion de la imagen de perfil */
+.glitch__layer:nth-child(2) {
+    transform: translateX(3%) translateY(3%);
+    animation: glitch-anim-2 2.3s -.8s infinite linear alternate;
+}
+
+/* Animacion de la imagen de perfil */
+.glitch__layer:nth-child(3) {
+    transform: translateX(5%);
+    animation: glitch-anim-flash 1s infinite linear;
+}
+
+/* Animacion de la imagen de perfil */
+@keyframes glitch-anim-1 {
+    0% {
+        clip-path: polygon(0 0%, 100% 0%, 100% 5%, 0 5%);
+    }
+
+    10% {
+        clip-path: polygon(0 15%, 100% 15%, 100% 15%, 0 15%);
+    }
+
+    20% {
+        clip-path: polygon(0 10%, 100% 10%, 100% 20%, 0 20%);
+    }
+
+    30% {
+        clip-path: polygon(0 1%, 100% 1%, 100% 2%, 0 2%);
+    }
+
+    40% {
+        clip-path: polygon(0 35%, 100% 35%, 100% 35%, 0 35%);
+    }
+
+    50% {
+        clip-path: polygon(0 45%, 100% 45%, 100% 46%, 0 46%);
+    }
+
+    60% {
+        clip-path: polygon(0 50%, 100% 50%, 100% 70%, 0 70%);
+    }
+
+    70% {
+        clip-path: polygon(0 70%, 100% 70%, 100% 70%, 0 70%);
+    }
+
+    80% {
+        clip-path: polygon(0 80%, 100% 80%, 100% 80%, 0 80%);
+    }
+
+    90% {
+        clip-path: polygon(0 50%, 100% 50%, 100% 55%, 0 55%);
+    }
+
+    100% {
+        clip-path: polygon(0 60%, 100% 60%, 100% 70%, 0 70%);
+    }
+}
+
+/* Animacion de la imagen de perfil */
+@keyframes glitch-anim-2 {
+    0% {
+        clip-path: polygon(0 15%, 100% 15%, 100% 30%, 0 30%);
+    }
+
+    15% {
+        clip-path: polygon(0 3%, 100% 3%, 100% 3%, 0 3%);
+    }
+
+    25% {
+        clip-path: polygon(0 8%, 100% 8%, 100% 20%, 0 20%);
+    }
+
+    30% {
+        clip-path: polygon(0 20%, 100% 20%, 100% 20%, 0 20%);
+    }
+
+    45% {
+        clip-path: polygon(0 45%, 100% 45%, 100% 45%, 0 45%);
+    }
+
+    50% {
+        clip-path: polygon(0 50%, 100% 50%, 100% 57%, 0 57%);
+    }
+
+    65% {
+        clip-path: polygon(0 60%, 100% 60%, 100% 60%, 0 60%);
+    }
+
+    75% {
+        clip-path: polygon(0 80%, 100% 80%, 100% 80%, 0 80%);
+    }
+
+    80% {
+        clip-path: polygon(0 40%, 100% 40%, 100% 60%, 0 60%);
+    }
+
+    95% {
+        clip-path: polygon(0 45%, 100% 45%, 100% 60%, 0 60%);
+    }
+
+    100% {
+        clip-path: polygon(0 11%, 100% 11%, 100% 15%, 0 15%);
+    }
+}
+
+/* Animacion de la imagen de perfil */
+@keyframes glitch-anim-flash {
+    0% {
+        opacity: .2;
+    }
+
+    30%,
+    100% {
+        opacity: 0;
+    }
+}
