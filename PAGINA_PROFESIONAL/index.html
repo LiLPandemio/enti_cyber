@@ -85,10 +85,7 @@
             <h1>Contacto:</h1>
             <form class="contactform">
                 <div class="form-field">
-                    <input style="width: 100%;" placeholder="Correo electronico" type="email" name="mail" id="mail">
-                </div>
-                <div class="form-field">
-                    <select id="country" style="width: 100%;" name="country" class="form-control">
+                    <select class="forminput" id="country" name="country">
                         <option value="" disabled selected>Seleccione su país</option>
                         <option value="Afghanistan">Afghanistan</option>
                         <option value="Åland Islands">Åland Islands</option>
@@ -345,10 +342,14 @@
                     </select>
                 </div>
                 <div class="form-field">
+                    <input class="forminput" placeholder="Correo electronico" type="email" name="mail" id="mail">
+                </div>
+                <div class="form-field">
 
-                    <textarea style="width: 100%;" placeholder="Escribe aqui tu comentario" name="comment" id="comment" rows="10"></textarea>
+                    <textarea class="forminput" placeholder="Escribe aqui tu comentario" name="comment" id="comment" rows="10"></textarea>
                 </div>
             </form>
+            <button style="width: 100%;" onclick="console.log('a')" class="forminput">Enviar</button>
         </div>
         <div class="column"></div>
     </div>

@@ -70,8 +70,23 @@ h6 {
     display: flex;
     flex-direction: column;
 }
+
 .form-field {
     padding-bottom: 20px;
+    display: flex;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+}
+
+.forminput {
+    background-color: #222;
+    border-radius: 5px;
+    border-color: #eee;
+    color: #eee;
+    width: 98%;
+    align-self: center;
+    padding: 15px;
 }
 
 .center-div {
