@@ -178,6 +178,27 @@ dd {
 /* =============================  Reglas para animaciones ================================ */
 /* ============================= ======================== ================================ */
 
+/* Animacion del texto con kenjis japonese */
+@keyframes matrix-animation {
+    0% {
+        content: "";
+    }
+
+    100% {
+        content: attr(data-content);
+    }
+}
+
+/* Estilo del texto animado */
+#matrix-text {
+    font-family: monospace;
+    font-size: 20px;
+    color: #eee;
+    /* white-space: nowrap; */
+    /* overflow: hidden; */
+    animation: matrix-animation 1s infinite;
+}
+
 /* Anima los cuadraditos para que indiquen la posibilidad de bajar */
 @keyframes blink {
     0% {
