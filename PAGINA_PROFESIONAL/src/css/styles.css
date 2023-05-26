@@ -21,7 +21,7 @@ html {
 
 /* Los textos han de ser blancos para que se vean en fondos oscuros */
 p {
-    color: #eee
+    color: #aaa
 }
 
 /* Los textos han de ser blancos para que se vean en fondos oscuros, los titulos tienen un blanco mas brillante */
@@ -31,7 +31,27 @@ h3,
 h4,
 h5,
 h6 {
-    color: #fff
+    color: #fff;
+}
+
+h2,
+h3,
+h4,
+h5,
+h6 {
+    border-bottom: 3px solid white;
+}
+
+dt {
+    margin-top: 5px;
+    border-bottom: 1px solid #666;
+    color: #fff;
+}
+
+dd {
+    border-left: 1px solid #666;
+    padding-left: 10px;
+    color: #aaa;
 }
 
 /* =================================== =============== =================================== */
