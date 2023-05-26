@@ -1,0 +1,60 @@
+* {
+    /* overflow: hidden; */
+}
+
+body,
+html {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    background-color: #222;
+    color: #eee
+    /* Agrega padding: 0; para evitar espacios adicionales */
+}
+
+p {
+    color: #eee
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: #fff
+}
+
+.row::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+.row {
+    width: "80%";
+    margin: 0 auto;
+}
+
+.column {
+    width: 100%;
+    float: left;
+    padding: 10px;
+    margin: 10px; /* Añade margen a las columnas */
+}
+
+.maxheight {
+    height: 100vh;
+    /* 100% de la altura de la ventana */
+}
+
+#cover {
+    width: 100%;
+    height: 100%;
+    background-image: url('../images/backg_main.jpg');
+    background-size: cover;
+    background-position: center;
+    overflow: auto;
+    /* Permite el desplazamiento vertical si es necesario */
+}
+
+@media screen and (min-width: 600px) {
+    .column {
+        width: 33.33%;
+    }
+}
