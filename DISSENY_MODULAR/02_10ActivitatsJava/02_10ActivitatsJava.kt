@@ -1,3 +1,1 @@
-fun main() {
-    print("Hola mundo");
-}
+//No he encontrado el enunciado.
