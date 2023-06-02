@@ -1,0 +1,1 @@
+cd "d:\.Data\Proyectos\DevOps\enti_cyber\DISSENY_MODULAR\11_JocCasino\" && kotlinc 11_Joc_Casino_Ruleta.kt -include-runtime -d 11_Joc_Casino_Ruleta.jar && java -jar 11_Joc_Casino_Ruleta.jar
