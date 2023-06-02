@@ -5,7 +5,7 @@ class Player(val nombre: String, var credito: Double)
 class Ruleta {
     val lastnums = mutableListOf<Int>()
 
-    fun spin(bets: Array<Pair<Int, Double>>): Int {
+    fun spin(bets: Array<Pair<Int, Double>>): Double {
         var randlimit = 100
         var i = 0
         val n = (0..36).toList().toTypedArray()
@@ -13,7 +13,7 @@ class Ruleta {
 
         while (randlimit > 0) {
             val animacion = buildString {
-                append("${n[0 + i]} | ${n[1 + i]} | ${n[2 + i]} | [[ ${n[3 + i]} ]] | ${n[4 + i]} | ${n[5 + i]} | ${n[6 + i]}\n")
+                append("${n[0 + i].toString().padStart(2, '0')} | ${n[1 + i].toString().padStart(2, '0')} | ${n[2 + i].toString().padStart(2, '0')} | [[ ${n[3 + i].toString().padStart(2, '0')} ]] | ${n[4 + i].toString().padStart(2, '0')} | ${n[5 + i].toString().padStart(2, '0')} | ${n[6 + i].toString().padStart(2, '0')}\n")
             }
             println(animacion)
 
@@ -23,7 +23,7 @@ class Ruleta {
             randlimit -= Random.nextInt(4, 11)
         }
 
-        println("Número premiado: $numeroPremiado")
+        println("Número premiado: ${numeroPremiado.toString().padStart(2, '0')}")
 
         // Guardar el número resultante en `lastnums`
         lastnums.add(numeroPremiado)
@@ -36,8 +36,8 @@ class Ruleta {
         return recompensa
     }
 
-    private fun calcularRecompensa(numero: Int, bets: Array<Pair<Int, Double>>): Int {
-        var recompensa = 0
+    private fun calcularRecompensa(numero: Int, bets: Array<Pair<Int, Double>>): Double {
+        var recompensa = 0.0
 
         for ((tipoApuesta, cantidad) in bets) {
             when (tipoApuesta) {
@@ -49,21 +49,21 @@ class Ruleta {
                 222 -> {
                     // Apostar a Par
                     if (numero % 2 == 0 && numero != 0) {
-                        recompensa += cantidad.toInt()
+                        recompensa += cantidad
                     }
                 }
 
                 333 -> {
                     // Apostar a Impar
                     if (numero % 2 != 0) {
-                        recompensa += cantidad.toInt()
+                        recompensa += cantidad
                     }
                 }
 
                 in 1..36 -> {
                     // Apostar a número
                     if (numero == tipoApuesta) {
-                        recompensa += (cantidad * 35).toInt()
+                        recompensa += cantidad * 35
                     }
                 }
             }
@@ -116,16 +116,16 @@ fun main() {
 
     val bets = obtenerApuestas()
 
-    val numeroResultante = ruleta.spin(bets)
-    println("El número resultante es: $numeroResultante")
-    jugador.credito += numeroResultante
+    val cantidadGanada = ruleta.spin(bets)
+    println("Cantidad ganada: $cantidadGanada")
+    jugador.credito += cantidadGanada
     println("El crédito del jugador es: ${jugador.credito}")
 }
 
 fun obtenerApuestas(): Array<Pair<Int, Double>> {
     val bets = mutableListOf<Pair<Int, Double>>()
 
-    println("Menu de apuestas:")
+    println("Menú de apuestas:")
     println("888. Apostar a Octetos")
     println("222. Apostar a Par")
     println("333. Apostar a Impar")
