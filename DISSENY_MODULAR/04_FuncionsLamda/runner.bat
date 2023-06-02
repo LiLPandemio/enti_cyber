@@ -1,0 +1,1 @@
+cd "d:\.Data\Proyectos\DevOps\enti_cyber\DISSENY_MODULAR\04_FuncionsLamda\" && kotlinc 04_FuncionsLamda.kt -include-runtime -d 04_FuncionsLamda.jar && java -jar 04_FuncionsLamda.jar

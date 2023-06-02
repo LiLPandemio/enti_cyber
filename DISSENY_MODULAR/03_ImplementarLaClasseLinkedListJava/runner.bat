@@ -1,0 +1,1 @@
+cd "d:\.Data\Proyectos\DevOps\enti_cyber\DISSENY_MODULAR\03_ImplementarLaClasseLinkedListJava\" && kotlinc 03_ImplementarLaClasseLinkedListJava.kt -include-runtime -d 03_ImplementarLaClasseLinkedListJava.jar && java -jar 03_ImplementarLaClasseLinkedListJava.jar

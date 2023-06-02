@@ -1,0 +1,108 @@
+******************************
+         MENÚ PRINCIPAL
+******************************
+1. Escribir DNIS
+2. Añadir DNI al final
+3. Comprobar DNI
+4. Salir
+******************************
+Ingrese el número de opción: 1
+Opción 1 seleccionada: Escribir DNIS
+Ingrese un DNI (o '-1' para finalizar): 12345678A
+Ingrese un DNI (o '-1' para finalizar): 87654321Z
+Ingrese un DNI (o '-1' para finalizar): -1
+La lista de DNIs se ha escrito correctamente en el archivo 'ENTRADAS.txt'.
+******************************
+         MENÚ PRINCIPAL
+******************************
+1. Escribir DNIS
+2. Añadir DNI al final
+3. Comprobar DNI
+4. Salir
+******************************
+Ingrese el número de opción: 2
+Opción 2 seleccionada: Añadir DNI al final
+Ingrese un DNI: 88888888F
+El DNI se ha añadido correctamente al archivo 'ENTRADAS.TXT'.
+******************************
+         MENÚ PRINCIPAL
+******************************
+1. Escribir DNIS
+2. Añadir DNI al final
+3. Comprobar DNI
+4. Salir
+******************************
+Ingrese el número de opción: 22222222A
+Opción inválida. Inténtelo nuevamente.
+******************************
+         MENÚ PRINCIPAL
+******************************
+1. Escribir DNIS
+2. Añadir DNI al final
+3. Comprobar DNI
+4. Salir
+******************************
+Ingrese el número de opción: 2
+Opción 2 seleccionada: Añadir DNI al final
+Ingrese un DNI: 22222222A
+El DNI se ha añadido correctamente al archivo 'ENTRADAS.TXT'.
+******************************
+         MENÚ PRINCIPAL
+******************************
+1. Escribir DNIS
+2. Añadir DNI al final
+3. Comprobar DNI
+4. Salir
+******************************
+Ingrese el número de opción: 3
+Opción 3 seleccionada: Comprobar DNI
+¿Qué acción desea realizar?
+1. Buscar un DNI
+2. Ver la lista completa de DNIs
+Ingrese el número de opción: 2
+Lista de DNIs:
+12345678A
+87654321Z
+88888888F
+22222222A
+******************************
+         MENÚ PRINCIPAL
+******************************
+1. Escribir DNIS
+2. Añadir DNI al final
+3. Comprobar DNI
+4. Salir
+******************************
+Ingrese el número de opción: 3
+Opción 3 seleccionada: Comprobar DNI
+¿Qué acción desea realizar?
+1. Buscar un DNI
+2. Ver la lista completa de DNIs
+Ingrese el número de opción: 1
+Ingrese el DNI a buscar: 22222222A
+El DNI '22222222A' se encuentra en la lista.
+******************************
+         MENÚ PRINCIPAL
+******************************
+1. Escribir DNIS
+2. Añadir DNI al final
+3. Comprobar DNI
+4. Salir
+******************************
+Ingrese el número de opción: 3
+Opción 3 seleccionada: Comprobar DNI
+¿Qué acción desea realizar?
+1. Buscar un DNI
+2. Ver la lista completa de DNIs
+Ingrese el número de opción: 1
+Ingrese el DNI a buscar: ASDASDASD
+El DNI 'ASDASDASD' no se encuentra en la lista.
+******************************
+         MENÚ PRINCIPAL
+******************************
+1. Escribir DNIS
+2. Añadir DNI al final
+3. Comprobar DNI
+4. Salir
+******************************
+Ingrese el número de opción:

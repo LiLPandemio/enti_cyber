@@ -1,0 +1,1 @@
+cd "d:\.Data\Proyectos\DevOps\enti_cyber\DISSENY_MODULAR\05_FitxersIO\" && kotlinc 05_FitxersIO.kt -include-runtime -d 05_FitxersIO.jar && java -jar 05_FitxersIO.jar
