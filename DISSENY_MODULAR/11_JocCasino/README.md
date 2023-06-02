@@ -1,39 +1,49 @@
-# Casino
+# Ruleta del Casino
 
-El código del casino es una implementación básica de un juego de ruleta en Python. A continuación se explica cómo funciona el código:
+El código implementa una versión básica de un juego de ruleta en Kotlin. A continuación, se explica cómo funciona el código:
 
-## Clase `Casino`
+## Clase `Player`
 
-La clase `Casino` representa el casino en sí y contiene los siguientes métodos:
+La clase `Player` representa a un jugador y tiene dos atributos:
 
-- `__init__(self)`: El constructor de la clase inicializa los atributos necesarios, como la lista de jugadores y el saldo del casino.
+- `nombre`: El nombre del jugador.
+- `credito`: El saldo actual del jugador.
 
-- `agregar_jugador(self, jugador)`: Este método permite agregar un jugador a la lista de jugadores del casino.
+## Clase `Ruleta`
 
-- `girar_ruleta(self)`: Este método simula el giro de la ruleta y devuelve un número aleatorio entre 0 y 36.
+La clase `Ruleta` representa la ruleta del casino y contiene los siguientes métodos:
 
-- `pago_apuesta(self, jugador, cantidad)`: Este método realiza el pago de una apuesta ganadora a un jugador.
+- `spin(bets: Array<Pair<Int, Double>>): Double`: Este método realiza el giro de la ruleta y calcula las recompensas para las apuestas realizadas. Toma un arreglo de apuestas (`bets`) como argumento y devuelve la cantidad total ganada por el jugador.
 
-- `cobro_apuesta(self, jugador, cantidad)`: Este método cobra una apuesta perdida a un jugador.
+- `calcularRecompensa(numero: Int, bets: Array<Pair<Int, Double>>): Double`: Este método calcula la recompensa para cada apuesta según el número ganador y las reglas de la ruleta.
 
-## Clase `Jugador`
+- `lastnums`: Una lista que guarda los últimos números premiados en la ruleta.
 
-La clase `Jugador` representa a un jugador y contiene los siguientes métodos:
+## Funciones auxiliares
 
-- `__init__(self, nombre, saldo_inicial)`: El constructor de la clase inicializa los atributos necesarios, como el nombre del jugador y su saldo inicial.
+El código también incluye algunas funciones auxiliares:
 
-- `realizar_apuesta(self, cantidad)`: Este método permite al jugador realizar una apuesta.
+- `main()`: La función principal del programa. Crea una instancia de la clase `Ruleta`, inicializa un jugador y solicita las apuestas mientras el jugador tenga crédito disponible.
 
-- `ganar_apuesta(self, cantidad)`: Este método se llama cuando el jugador gana una apuesta y aumenta su saldo.
+- `obtenerApuestas(jugador: Player): Array<Pair<Int, Double>>`: Esta función muestra un menú de apuestas y permite al jugador realizar apuestas ingresando las opciones y cantidades correspondientes.
 
-- `perder_apuesta(self, cantidad)`: Este método se llama cuando el jugador pierde una apuesta y disminuye su saldo.
+- `obtenerCantidadApostada(jugador: Player): Double`: Esta función solicita al jugador ingresar la cantidad que desea apostar y verifica que sea válida.
+
+- `clear()`: Esta función se utiliza para limpiar la pantalla en el entorno de la línea de comandos.
 
 ## Uso del código
 
-1. Se crea una instancia de la clase `Casino`.
-2. Se agregan jugadores al casino usando el método `agregar_jugador`.
-3. Se inicia el juego llamando al método `girar_ruleta` para obtener un número ganador.
-4. Se realizan apuestas por parte de los jugadores usando el método `realizar_apuesta`.
-5. El casino realiza los pagos y cobros correspondientes llamando a los métodos `pago_apuesta` y `cobro_apuesta`.
+1. Se crea una instancia de la clase `Ruleta`.
+2. Se inicializa un jugador con un nombre y un saldo inicial.
+3. Mientras el jugador tenga crédito disponible, se solicitan las apuestas utilizando la función `obtenerApuestas`.
+4. Las apuestas se pasan al método `spin` de la ruleta para realizar el giro y calcular las recompensas.
+5. Las ganancias se suman al saldo del jugador y se muestra el crédito actual.
+6. El proceso se repite hasta que el jugador se quede sin crédito.
 
-¡Esto es básicamente cómo funciona el código del casino en Python! Ten en cuenta que esta es solo una explicación general y puede haber más detalles en el código real, pero esto debería darte una idea de su estructura y funcionamiento.
+## Notas adicionales
+
+- El código utiliza la clase `Random` de Kotlin para generar números aleatorios y la función `Thread.sleep` para simular una animación en el giro de la ruleta.
+- El código está diseñado para ejecutarse en un entorno de línea de comandos y utiliza la función `clear()` para limpiar la pantalla. Puede requerir ajustes para ejecutarse en otros entornos.
+- Las reglas de las apuestas y las recompensas se implementan dentro del método `calcularRecompensa`. Cada número o rango de números tiene una lógica específica para determinar si una apuesta es ganadora.
+
+Esta es una explicación general del código proporcionado. Puedes ajustarlo y expandirlo según tus necesidades. ¡Diviértete jugando a la ruleta!
