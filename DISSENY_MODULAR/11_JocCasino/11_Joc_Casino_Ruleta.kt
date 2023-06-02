@@ -117,6 +117,7 @@ fun main() {
             println("No se realizaron apuestas.")
         }
     }
+    println("Game Over")
 }
 
 fun obtenerApuestas(jugador: Player): Array<Pair<Int, Double>> {
