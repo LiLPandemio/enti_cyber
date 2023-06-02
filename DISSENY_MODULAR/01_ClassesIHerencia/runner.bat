@@ -1,0 +1,1 @@
+cd "d:\.Data\Proyectos\DevOps\enti_cyber\DISSENY_MODULAR\01_ClassesIHerencia\" && kotlinc 01_ClassesIHerencia.kt -include-runtime -d 01_ClassesIHerencia.jar && java -jar 01_ClassesIHerencia.jar
