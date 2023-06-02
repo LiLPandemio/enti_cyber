@@ -31,9 +31,7 @@ class Ruleta {
 
         // Calcular las recompensas y actualizar el crédito del jugador
         val recompensa = calcularRecompensa(numero, bets)
-        actualizarCreditoJugador(recompensa)
-
-        return numero // Devolver el número resultante
+        return recompensa
     }
 
     private fun printAnimation(numero: Int) {
@@ -56,43 +54,52 @@ class Ruleta {
 
     private fun calcularRecompensa(numero: Int, bets: Array<Int>): Int {
         var recompensa = 0
-    
-        val numerosApostados = bets[8]
+
+        val numerosApostados = bets.sliceArray(8 until bets.size)
         val paresApostados = bets[0]
         val imparesApostados = bets[1]
         val octavosApostados = bets.sliceArray(2..7)
-    
+
         // Calcular recompensas para números específicos
-        for (i in numerosApostados.indices) {
-            val numeroApostado = numerosApostados[i]
+        for (numeroApostado in numerosApostados) {
             if (numeroApostado == numero) {
                 recompensa += 35 * numeroApostado
             }
         }
-    
+
         // Calcular recompensas para apuestas pares e impares
         if (numero == 0) {
-            recompensa += 50 * bets[0]
+            recompensa += 50 * paresApostados
         } else if (numero % 2 == 0) {
             recompensa += paresApostados
         } else {
             recompensa += imparesApostados
         }
-    
+
         // Calcular recompensas para apuestas en octavos
         val octavoIndex = (numero - 1) / 4
-        if (octavosApostados[octavoIndex] == 1) {
-            recompensa += 8
-        }
-    
+        recompensa += 2 * octavosApostados[octavoIndex]
+
         return recompensa
-    }
-    
-    private fun actualizarCreditoJugador(recompensa: Int) {
-        jugador.credito += recompensa
     }
 }
 
 fun main() {
-    println(spinWheel())
+    val ruleta = Ruleta()
+    val jugador = Player("Jugador1", 100)
+
+    val bets = obtenerApuestas()
+
+    val numeroResultante = ruleta.spin(bets)
+    println("El número resultante es: $numeroResultante")
+    println("El crédito del jugador es: ${jugador.credito}")
+}
+
+fun obtenerApuestas(): Array<Int> {
+    val numerosApostados = intArrayOf(1, 5, 9, 12, 18, 22, 29, 32)
+    val paresApostados = 5
+    val imparesApostados = 2
+    val octavosApostados = intArrayOf(1, 0, 0, 0, 1, 0, 1)
+
+    return arrayOf(paresApostados, imparesApostados) + octavosApostados.toList() + numerosApostados.toList()
 }
