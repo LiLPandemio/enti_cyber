@@ -21,6 +21,7 @@ import random
 import random
 import re
 
+
 async def obtener_frase_aleatoria():
     url = "https://api.breakingbadquotes.xyz/v1/quotes"
     async with httpx.AsyncClient() as client:
@@ -47,6 +48,53 @@ def censurar_palabra(frase):
 
     return palabra_a_censurar, frase_censurada
 
+class AdivinaPersonajeScreen(Screen):
+    CSS_PATH = "main.css"
+    def compose(self) -> ComposeResult:
+                # Definición del botón de cerrar juego
+        self.close_button = Button("Salir", classes="danger", id="close")
+        self.guessinput = Input(placeholder="Respuesta")
+        # Creando un elemento static al que hacer update
+        self.frase_aleatoria = Static(id="frase_aleatoria")
+        self.frase_aleatoria.update("Loading...")
+        # Creación de los objetos
+        yield Label("Bienvenido a Breaking Bad Guesser", id="hello")
+        yield self.frase_aleatoria
+        self.backbutton = Button("Volver al menú", classes="danger", id="goBack")
+        self.submitButton = Button("Responder", classes="success", id="submit")
+        yield self.guessinput
+        self.pasapalabra = Button("Pasa palabra", id="newquestion")
+        yield self.submitButton
+        yield self.pasapalabra
+        # Boton ir atrás
+        self.backbutton = Button("Volver al menú", classes="danger", id="goBack")
+        yield self.backbutton
+    async def obtener_y_actualizar_frase_aleatoria(self):
+        frase_aleatoria = await obtener_frase_aleatoria()
+        frase = frase_aleatoria["quote"]
+        self.answer = frase_aleatoria["author"]
+        if frase is not None:
+            self.frase_aleatoria.update(frase)   # Update the frase_aleatoria_text property
+        else:
+            self.frase_aleatoria.update("Error")  # Update the frase_aleatoria_text property
+        self.refresh()
+    async def on_mount(self):
+        await self.obtener_y_actualizar_frase_aleatoria()
+
+    async def on_button_pressed(self, event: Button.Pressed) -> None:
+        # Lógica del botón de salir
+        if event.button.id == "goBack":
+            self.dismiss()  # Pop screen
+        # Lógica del botón submit
+        if event.button.id == "newquestion":
+            await self.obtener_y_actualizar_frase_aleatoria()
+        if event.button.id == "submit":
+            text = self.guessinput.value
+            if(text == self.answer):
+                text = "Tu respuesta es correcta"
+            else:
+                text = "La respuesta correcta era: " + self.answer 
+            self.frase_aleatoria.update(text)
 
 class AdivinaPalabraScreen(Screen):
     CSS_PATH = "main.css"
