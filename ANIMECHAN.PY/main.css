@@ -13,4 +13,13 @@ Screen {
 
 Button {
     width: 100%;
+    background: darkslategray;
+}
+
+.success {
+    background: green;
+}
+
+.danger {
+    background: darkred;
 }

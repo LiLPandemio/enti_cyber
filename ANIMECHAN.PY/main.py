@@ -26,16 +26,19 @@ An implementation of a classic calculator, with a layout inspired by macOS calcu
 
 """
 from textual.app import App, ComposeResult
-from textual.widgets import Button, Label
+from textual.widgets import Button, Label, Input
 from textual.screen import Screen
 
 
 class AdivinaPersonajeScreen(Screen):
     CSS_PATH = "main.css"
     def compose(self) -> ComposeResult:
-        self.backbutton = Button("Volver al menu", id="goBack")
+        self.backbutton = Button("Volver al menu", classes="danger", id="goBack")
+        self.submitButton = Button("Responder", classes="success", id="submit")
 
         yield Label("Adivina el puto personaje :)", id="monodeuganda")
+        yield Input(placeholder="Respuesta")
+        yield self.submitButton
         yield self.backbutton
         pass
     def on_button_pressed(self, event: Button.Pressed) -> None:
@@ -48,9 +51,12 @@ class AdivinaPersonajeScreen(Screen):
 class AdivinaAnimeScreen(Screen):
     CSS_PATH = "main.css"
     def compose(self) -> ComposeResult:
-        self.backbutton = Button("Volver al menu", id="goBack")
+        self.backbutton = Button("Volver al menu", classes="danger", id="goBack")
+        self.submitButton = Button("Responder", classes="success", id="submit")
 
         yield Label("Adivina el puto anime :)", id="monodeuganda")
+        yield Input(placeholder="Respuesta")
+        yield self.submitButton
         yield self.backbutton
         pass
     def on_button_pressed(self, event: Button.Pressed) -> None:
@@ -63,9 +69,12 @@ class AdivinaAnimeScreen(Screen):
 class AdivinaPersonajeAnimeScreen(Screen):
     CSS_PATH = "main.css"
     def compose(self) -> ComposeResult:
-        self.backbutton = Button("Volver al menu", id="goBack")
+        self.backbutton = Button("Volver al menu", classes="danger", id="goBack")
+        self.submitButton = Button("Responder", classes="success", id="submit")
 
         yield Label("Adivina el puto personaje del anime :)", id="monodeuganda")
+        yield Input(placeholder="Respuesta")
+        yield self.submitButton
         yield self.backbutton
         pass
     def on_button_pressed(self, event: Button.Pressed) -> None:
@@ -85,10 +94,10 @@ class MyFuckingScreen(App):
         self.Launch_AdivinaPersonajeAnime = Button("Adivina el personaje de un anime", id="Launch_AdivinaPersonajeAnime")
 
         #Definicion boton de cerrar juego
-        self.close_button = Button("Salir", id="close")
+        self.close_button = Button("Salir", classes="danger", id="close")
 
         #Creacion de los objetos
-        yield Label("Hello Textual", id="hello")
+        yield Label("Bienvenido a AnimeGuesser", id="hello")
         yield self.Launch_AdivinaPersonaje
         yield self.Launch_AdivinaAnime
         yield self.Launch_AdivinaPersonajeAnime
