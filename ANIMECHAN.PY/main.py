@@ -12,7 +12,6 @@ El menu principal tendra 2 botones centrados que dan las opciones:
 
 
 """
-
 from textual.app import App, ComposeResult
 from textual.widgets import Button, Label, Input, Static
 from textual.screen import Screen
@@ -48,11 +47,10 @@ class AdivinaPersonajeScreen(Screen):
         # Creación de los objetos
         yield Label("Bienvenido a Breaking Bad Guesser", id="hello")
         yield self.frase_aleatoria
-        self.backbutton = Button("Volver al menú", classes="danger", id="goBack")
-        self.submitButton = Button("Responder", classes="success", id="submit")
-        self.pasapalabra = Button("Pasa palabra", id="newquestion")
         yield self.guessinput
+        self.pasapalabra = Button("Pasa palabra", id="newquestion")
         yield self.pasapalabra
+        self.submitButton = Button("Responder", classes="success", id="submit")
         yield self.submitButton
 
         # Boton ir atrás
@@ -77,7 +75,7 @@ class AdivinaPersonajeScreen(Screen):
         if event.button.id == "goBack":
             self.dismiss()  # Pop screen
         # Lógica del botón de newquestion
-        if event.button.id == "goBack":
+        if event.button.id == "newquestion":
             await self.obtener_y_actualizar_frase_aleatoria()
         # Lógica del botón submit
         if event.button.id == "submit":
@@ -87,7 +85,6 @@ class AdivinaPersonajeScreen(Screen):
             else:
                 text = "La respuesta correcta era: " + self.answer 
             self.frase_aleatoria.update(text)
-
 
 class MyFuckingScreen(App):
     CSS_PATH = "main.css"
