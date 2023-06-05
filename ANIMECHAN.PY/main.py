@@ -21,7 +21,7 @@ El menu principal tendra 4 botones centrados que dan las opciones:
 """
 
 from textual.app import App, ComposeResult
-from textual.widgets import Button, Label, Input
+from textual.widgets import Button, Label, Input, Static
 from textual.screen import Screen
 import asyncio
 import httpx
@@ -32,7 +32,7 @@ async def obtener_frase_aleatoria():
         try:
             response = await client.get(url)
             if response.status_code == 200:
-                frase = response.json()[0]["quote"]
+                frase = response.json()[0]
                 return frase
             else:
                 return "Error obteniendo la frase"
@@ -95,7 +95,7 @@ class AdivinaPersonajeAnimeScreen(Screen):
 
 class MyFuckingScreen(App):
     CSS_PATH = "main.css"
-
+    frase_aleatoria_text = ""  # Add this line
     def compose(self) -> ComposeResult:
         # Definición de los botones de lanzamiento
         self.Launch_AdivinaPersonaje = Button("Adivina el personaje", id="Launch_AdivinaPersonaje")
@@ -106,10 +106,10 @@ class MyFuckingScreen(App):
         self.close_button = Button("Salir", classes="danger", id="close")
 
         #Creando una isntancia de label almacenada en una propiedad de la clase para modificar mas tarde su texto.
-        self.frase_aleatoria = Label("Loading...", id="frase_aleatoria")
-
+        self.frase_aleatoria = Static(id="frase_aleatoria")
+        self.frase_aleatoria.update("Loading...")
         # Creación de los objetos
-        yield Label("Bienvenido a AnimeGuesser", id="hello")
+        yield Label("Bienvenido a Breaking Bad Guesser", id="hello")
         yield self.frase_aleatoria
         yield self.Launch_AdivinaPersonaje
         yield self.Launch_AdivinaAnime
@@ -118,17 +118,12 @@ class MyFuckingScreen(App):
 
     async def obtener_y_actualizar_frase_aleatoria(self):
         frase_aleatoria = await obtener_frase_aleatoria()
+        frase_aleatoria = frase_aleatoria["quote"] + "\n  - " + frase_aleatoria["author"]
         if frase_aleatoria is not None:
-            self.frase_aleatoria_text = frase_aleatoria
-            self.update_frase_aleatoria_text()
+            self.frase_aleatoria.update(frase_aleatoria)   # Update the frase_aleatoria_text property
         else:
-            self.frase_aleatoria_text = "ERROR"
-            self.update_frase_aleatoria_text()
-
-    def update_frase_aleatoria_text(self):
-        self.frase_aleatoria.text = self.frase_aleatoria_text
+            self.frase_aleatoria.update("Error")  # Update the frase_aleatoria_text property
         self.refresh()
-
 
     async def on_mount(self):
         await self.obtener_y_actualizar_frase_aleatoria()
