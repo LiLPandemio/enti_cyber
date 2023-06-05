@@ -28,7 +28,18 @@ An implementation of a classic calculator, with a layout inspired by macOS calcu
 from textual.app import App, ComposeResult
 from textual.widgets import Button, Label, Input
 from textual.screen import Screen
+from textual import events
+import asyncio
+import requests
 
+def obtener_frase_aleatoria():
+    url = "https://animechan.vercel.app/api/random"
+    response = requests.get(url)
+    if response.status_code == 200:
+        frase = response.json()
+        return frase
+    else:
+        return None
 
 class AdivinaPersonajeScreen(Screen):
     CSS_PATH = "main.css"
@@ -40,12 +51,10 @@ class AdivinaPersonajeScreen(Screen):
         yield Input(placeholder="Respuesta")
         yield self.submitButton
         yield self.backbutton
-        pass
     def on_button_pressed(self, event: Button.Pressed) -> None:
         #Logica del boton de salir
         if(event.button.id == "goBack"):
             self.dismiss() # Pop screen
-
 
 
 class AdivinaAnimeScreen(Screen):
@@ -58,7 +67,6 @@ class AdivinaAnimeScreen(Screen):
         yield Input(placeholder="Respuesta")
         yield self.submitButton
         yield self.backbutton
-        pass
     def on_button_pressed(self, event: Button.Pressed) -> None:
         #Logica del boton de salir
         if(event.button.id == "goBack"):
@@ -76,7 +84,6 @@ class AdivinaPersonajeAnimeScreen(Screen):
         yield Input(placeholder="Respuesta")
         yield self.submitButton
         yield self.backbutton
-        pass
     def on_button_pressed(self, event: Button.Pressed) -> None:
         #Logica del boton de salir
         if(event.button.id == "goBack"):
@@ -96,8 +103,11 @@ class MyFuckingScreen(App):
         #Definicion boton de cerrar juego
         self.close_button = Button("Salir", classes="danger", id="close")
 
+        frase_aleatoria = obtener_frase_aleatoria()
+
         #Creacion de los objetos
         yield Label("Bienvenido a AnimeGuesser", id="hello")
+        yield Label(frase_aleatoria["Quote"], id="hello")
         yield self.Launch_AdivinaPersonaje
         yield self.Launch_AdivinaAnime
         yield self.Launch_AdivinaPersonajeAnime
