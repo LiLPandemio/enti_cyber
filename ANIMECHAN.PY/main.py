@@ -94,11 +94,6 @@ class MyFuckingScreen(App):
         yield self.Launch_AdivinaPersonajeAnime
         yield self.close_button
 
-    def on_mount(self) -> None:
-        # self.screen.styles.background = "darkblue"
-        # self.close_button.styles.background = "red"
-        pass
-
     def on_button_pressed(self, event: Button.Pressed) -> None:
         #Logica del boton de salir
         if(event.button.id == "close"):
