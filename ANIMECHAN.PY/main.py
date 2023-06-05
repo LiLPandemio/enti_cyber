@@ -31,21 +31,33 @@ from textual.screen import Screen
 
 
 class AdivinaPersonajeScreen(Screen):
-        def compose(self) -> ComposeResult:
-            yield Label("Adivina el puto personaje :)", id="monodeuganda")
-            pass
+    CSS_PATH = "main.css"
+    def compose(self) -> ComposeResult:
+        self.backbutton = Button("Volver al menu", id="goBack")
+
+        yield Label("Adivina el puto personaje :)", id="monodeuganda")
+        yield self.backbutton
+        pass
 
 
 class AdivinaAnimeScreen(Screen):
-        def compose(self) -> ComposeResult:
-            yield Label("Adivina el puto anime :)", id="monodeuganda")
-            pass
+    CSS_PATH = "main.css"
+    def compose(self) -> ComposeResult:
+        self.backbutton = Button("Volver al menu", id="goBack")
+
+        yield Label("Adivina el puto anime :)", id="monodeuganda")
+        yield self.backbutton
+        pass
 
 
 class AdivinaPersonajeAnimeScreen(Screen):
-        def compose(self) -> ComposeResult:
-            yield Label("Adivina el puto personaje del anime :)", id="monodeuganda")
-            pass
+    CSS_PATH = "main.css"
+    def compose(self) -> ComposeResult:
+        self.backbutton = Button("Volver al menu", id="goBack")
+
+        yield Label("Adivina el puto personaje del anime :)", id="monodeuganda")
+        yield self.backbutton
+        pass
 
 
 class MyFuckingScreen(App):
