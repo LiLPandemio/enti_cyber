@@ -34,26 +34,58 @@ async def obtener_frase_aleatoria():
 
 class AdivinaPersonajeScreen(Screen):
     CSS_PATH = "main.css"
-
     def compose(self) -> ComposeResult:
+        self.answer = ""
+
+        self.guessinput = Input(placeholder="Respuesta")
+
+        # Definición del botón de cerrar juego
+        self.close_button = Button("Salir", classes="danger", id="close")
+
+        # Creando un elemento static al que hacer update
+        self.frase_aleatoria = Static(id="frase_aleatoria")
+        self.frase_aleatoria.update("Loading...")
+        # Creación de los objetos
+        yield Label("Bienvenido a Breaking Bad Guesser", id="hello")
+        yield self.frase_aleatoria
         self.backbutton = Button("Volver al menú", classes="danger", id="goBack")
         self.submitButton = Button("Responder", classes="success", id="submit")
-
-        yield Label("Adivina el puto personaje :)", id="monodeuganda")
-
-        yield Input(placeholder="Respuesta")
+        yield self.guessinput
         yield self.submitButton
+
+        # Boton ir atrás
+        self.backbutton = Button("Volver al menú", classes="danger", id="goBack")
         yield self.backbutton
+
+    async def obtener_y_actualizar_frase_aleatoria(self):
+        frase_aleatoria = await obtener_frase_aleatoria()
+        frase = frase_aleatoria["quote"]
+        self.answer = frase_aleatoria["author"]
+        if frase is not None:
+            self.frase_aleatoria.update(frase)   # Update the frase_aleatoria_text property
+        else:
+            self.frase_aleatoria.update("Error")  # Update the frase_aleatoria_text property
+        self.refresh()
+
+    async def on_mount(self):
+        await self.obtener_y_actualizar_frase_aleatoria()
 
     def on_button_pressed(self, event: Button.Pressed) -> None:
         # Lógica del botón de salir
         if event.button.id == "goBack":
             self.dismiss()  # Pop screen
+        # Lógica del botón submit
+        if event.button.id == "submit":
+            text = self.guessinput.value
+            if(text == self.answer):
+                text = "Tu respuesta es correcta"
+            else:
+                text = "La respuesta correcta era: " + self.answer 
+            self.frase_aleatoria.update(text)
 
 
 class MyFuckingScreen(App):
     CSS_PATH = "main.css"
-    frase_aleatoria_text = ""  # Add this line
     def compose(self) -> ComposeResult:
         # Definición de los botones de lanzamiento
         self.Launch_AdivinaPersonaje = Button("Adivina el personaje", id="Launch_AdivinaPersonaje")
@@ -61,7 +93,7 @@ class MyFuckingScreen(App):
         # Definición del botón de cerrar juego
         self.close_button = Button("Salir", classes="danger", id="close")
 
-        #Creando una isntancia de label almacenada en una propiedad de la clase para modificar mas tarde su texto.
+        # Creando un elemento static al que hacer update
         self.frase_aleatoria = Static(id="frase_aleatoria")
         self.frase_aleatoria.update("Loading...")
         # Creación de los objetos
