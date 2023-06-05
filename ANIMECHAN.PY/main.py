@@ -40,24 +40,7 @@ class AdivinaPersonajeScreen(Screen):
         self.submitButton = Button("Responder", classes="success", id="submit")
 
         yield Label("Adivina el puto personaje :)", id="monodeuganda")
-        yield Input(placeholder="Respuesta")
-        yield self.submitButton
-        yield self.backbutton
 
-    def on_button_pressed(self, event: Button.Pressed) -> None:
-        # Lógica del botón de salir
-        if event.button.id == "goBack":
-            self.dismiss()  # Pop screen
-
-
-class AdivinaPersonajeBrakingBadScreen(Screen):
-    CSS_PATH = "main.css"
-
-    def compose(self) -> ComposeResult:
-        self.backbutton = Button("Volver al menú", classes="danger", id="goBack")
-        self.submitButton = Button("Responder", classes="success", id="submit")
-
-        yield Label("Adivina el puto personaje del BrakingBad :)", id="monodeuganda")
         yield Input(placeholder="Respuesta")
         yield self.submitButton
         yield self.backbutton
