@@ -38,6 +38,11 @@ class AdivinaPersonajeScreen(Screen):
         yield Label("Adivina el puto personaje :)", id="monodeuganda")
         yield self.backbutton
         pass
+    def on_button_pressed(self, event: Button.Pressed) -> None:
+        #Logica del boton de salir
+        if(event.button.id == "goBack"):
+            self.dismiss() # Pop screen
+
 
 
 class AdivinaAnimeScreen(Screen):
@@ -48,6 +53,11 @@ class AdivinaAnimeScreen(Screen):
         yield Label("Adivina el puto anime :)", id="monodeuganda")
         yield self.backbutton
         pass
+    def on_button_pressed(self, event: Button.Pressed) -> None:
+        #Logica del boton de salir
+        if(event.button.id == "goBack"):
+            self.dismiss() # Pop screen
+
 
 
 class AdivinaPersonajeAnimeScreen(Screen):
@@ -58,6 +68,11 @@ class AdivinaPersonajeAnimeScreen(Screen):
         yield Label("Adivina el puto personaje del anime :)", id="monodeuganda")
         yield self.backbutton
         pass
+    def on_button_pressed(self, event: Button.Pressed) -> None:
+        #Logica del boton de salir
+        if(event.button.id == "goBack"):
+            self.dismiss() # Pop screen
+
 
 
 class MyFuckingScreen(App):
