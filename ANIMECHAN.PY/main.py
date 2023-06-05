@@ -1,22 +1,15 @@
 """
 Proyecto de API: https://api.breakingbadquotes.xyz/v1/quotes
-    El proyect consistira en un minijuego de preguntas sobre animes.
+    El proyect consistira en un minijuego de preguntas sobre BrakingBads.
         Adivina el personaje
-        Adivina el anime
-        Adivina el personaje del anime X
+        Adivina el personaje del BrakingBad X
 
 Funcionamiento:
-El menu principal tendra 4 botones centrados que dan las opciones:
+El menu principal tendra 2 botones centrados que dan las opciones:
     Adivina el personaje
         El menu mostrara una frase obtenida de la api https://api.breakingbadquotes.xyz/v1/quotes
         Habra debajo un input text que preguntara que personaje dice esa frase.
-    Adivina el anime
-        Te saldra una frase con el nombre del personaje en el centro de la pantalla
-        Debajo un campo de texto pedirá el nombre del anime
-    Adivina el personaje del anime X
-        Aqui lo primero te preguntará de que anime quieres ver preguntas.
-        Si el anime existe pasara a la siguiente pantalla
-            La siguiente pantalla sacara frases de un anime y te preguntara igual que en las pantallas de las otras opciones el nombre del personaje.
+
 
 """
 
@@ -57,32 +50,14 @@ class AdivinaPersonajeScreen(Screen):
             self.dismiss()  # Pop screen
 
 
-class AdivinaAnimeScreen(Screen):
+class AdivinaPersonajeBrakingBadScreen(Screen):
     CSS_PATH = "main.css"
 
     def compose(self) -> ComposeResult:
         self.backbutton = Button("Volver al menú", classes="danger", id="goBack")
         self.submitButton = Button("Responder", classes="success", id="submit")
 
-        yield Label("Adivina el puto anime :)", id="monodeuganda")
-        yield Input(placeholder="Respuesta")
-        yield self.submitButton
-        yield self.backbutton
-
-    def on_button_pressed(self, event: Button.Pressed) -> None:
-        # Lógica del botón de salir
-        if event.button.id == "goBack":
-            self.dismiss()  # Pop screen
-
-
-class AdivinaPersonajeAnimeScreen(Screen):
-    CSS_PATH = "main.css"
-
-    def compose(self) -> ComposeResult:
-        self.backbutton = Button("Volver al menú", classes="danger", id="goBack")
-        self.submitButton = Button("Responder", classes="success", id="submit")
-
-        yield Label("Adivina el puto personaje del anime :)", id="monodeuganda")
+        yield Label("Adivina el puto personaje del BrakingBad :)", id="monodeuganda")
         yield Input(placeholder="Respuesta")
         yield self.submitButton
         yield self.backbutton
@@ -99,8 +74,6 @@ class MyFuckingScreen(App):
     def compose(self) -> ComposeResult:
         # Definición de los botones de lanzamiento
         self.Launch_AdivinaPersonaje = Button("Adivina el personaje", id="Launch_AdivinaPersonaje")
-        self.Launch_AdivinaAnime = Button("Adivina el anime", id="Launch_AdivinaAnime")
-        self.Launch_AdivinaPersonajeAnime = Button("Adivina el personaje de un anime", id="Launch_AdivinaPersonajeAnime")
 
         # Definición del botón de cerrar juego
         self.close_button = Button("Salir", classes="danger", id="close")
@@ -112,8 +85,6 @@ class MyFuckingScreen(App):
         yield Label("Bienvenido a Breaking Bad Guesser", id="hello")
         yield self.frase_aleatoria
         yield self.Launch_AdivinaPersonaje
-        yield self.Launch_AdivinaAnime
-        yield self.Launch_AdivinaPersonajeAnime
         yield self.close_button
 
     async def obtener_y_actualizar_frase_aleatoria(self):
@@ -137,16 +108,6 @@ class MyFuckingScreen(App):
         if event.button.id == "Launch_AdivinaPersonaje":
             adivinaPersonajeScreen = AdivinaPersonajeScreen()
             self.push_screen(adivinaPersonajeScreen)
-
-        # Lógica del botón de Adivina el anime
-        if event.button.id == "Launch_AdivinaAnime":
-            adivinaAnimeScreen = AdivinaAnimeScreen()
-            self.push_screen(adivinaAnimeScreen)
-
-        # Lógica del botón de Adivina el personaje del anime X
-        if event.button.id == "Launch_AdivinaPersonajeAnime":
-            adivinaPersonajeAnimeScreen = AdivinaPersonajeAnimeScreen()
-            self.push_screen(adivinaPersonajeAnimeScreen)
 
 
 if __name__ == "__main__":
