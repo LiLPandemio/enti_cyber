@@ -31,34 +31,68 @@ from textual.screen import Screen
 
 
 class AdivinaPersonajeScreen(Screen):
-    def compose(self) -> ComposeResult:
-        yield Label("Hello Textual", id="hello")
+        def compose(self) -> ComposeResult:
+            yield Label("Adivina el puto personaje :)", id="monodeuganda")
+            pass
 
 
-class MainScreen(App):
+class AdivinaAnimeScreen(Screen):
+        def compose(self) -> ComposeResult:
+            yield Label("Adivina el puto anime :)", id="monodeuganda")
+            pass
+
+
+class AdivinaPersonajeAnimeScreen(Screen):
+        def compose(self) -> ComposeResult:
+            yield Label("Adivina el puto personaje del anime :)", id="monodeuganda")
+            pass
+
+
+class MyFuckingScreen(App):
     CSS_PATH = "main.css"
 
     def compose(self) -> ComposeResult:
-        self.close_button = Button("Close", id="close")
-        self.adivinaPersonajeLauncher = Button("Adivinar el personaje", id="adivinaPersonajeLauncher")
-        self.adivinaAnimeLauncher = Button("Adivinar el anime", id="adivinaAnimeLauncher")
-        self.adivinaPersonajeAnimeLauncher = Button("Adivinar el personaje (de un Anime)", id="adivinaPersonajeAnimeLauncher")
+        #Definicion de los botones de lanzamiento
+        self.Launch_AdivinaPersonaje = Button("Adivina el personaje", id="Launch_AdivinaPersonaje")
+        self.Launch_AdivinaAnime = Button("Adivina el anime", id="Launch_AdivinaAnime")
+        self.Launch_AdivinaPersonajeAnime = Button("Adivina el personaje de un anime", id="Launch_AdivinaPersonajeAnime")
 
+        #Definicion boton de cerrar juego
+        self.close_button = Button("Salir", id="close")
+
+        #Creacion de los objetos
         yield Label("Hello Textual", id="hello")
-        yield self.adivinaPersonajeLauncher
-        yield self.adivinaAnimeLauncher
-        yield self.adivinaPersonajeAnimeLauncher
+        yield self.Launch_AdivinaPersonaje
+        yield self.Launch_AdivinaAnime
+        yield self.Launch_AdivinaPersonajeAnime
         yield self.close_button
 
     def on_mount(self) -> None:
+        # self.screen.styles.background = "darkblue"
+        # self.close_button.styles.background = "red"
         pass
 
     def on_button_pressed(self, event: Button.Pressed) -> None:
-        if event.button.id == "adivinaPersonajeLauncher":
-            adivinaPersonaje = AdivinaPersonajeScreen()
-            self.push_screen(adivinaPersonaje)
+        #Logica del boton de salir
+        if(event.button.id == "close"):
+            self.exit(event.button.id)
 
+        #Logica del boton de Adivinar el personaje
+        if (event.button.id == "Launch_AdivinaPersonaje"):
+            adivinaPersonajeScreen = AdivinaPersonajeScreen()
+            self.push_screen(adivinaPersonajeScreen)
 
+        #Logica del boton de Adivina el anime
+        if (event.button.id == "Launch_AdivinaAnime"):
+            adivinaAnimeScreen = AdivinaAnimeScreen()
+            self.push_screen(adivinaAnimeScreen)
+
+        #Logica del boton de Adivina el personaje del anime X
+        if (event.button.id == "Launch_AdivinaPersonajeAnime"):
+            adivinaPersonajeAnimeScreen = AdivinaPersonajeAnimeScreen()
+            self.push_screen(adivinaPersonajeAnimeScreen)
+
+        
 if __name__ == "__main__":
-    app = MainScreen()
+    app = MyFuckingScreen()
     app.run()
