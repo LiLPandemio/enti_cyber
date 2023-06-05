@@ -50,7 +50,9 @@ class AdivinaPersonajeScreen(Screen):
         yield self.frase_aleatoria
         self.backbutton = Button("Volver al menú", classes="danger", id="goBack")
         self.submitButton = Button("Responder", classes="success", id="submit")
+        self.pasapalabra = Button("Pasa palabra", id="newquestion")
         yield self.guessinput
+        yield self.pasapalabra
         yield self.submitButton
 
         # Boton ir atrás
@@ -70,10 +72,13 @@ class AdivinaPersonajeScreen(Screen):
     async def on_mount(self):
         await self.obtener_y_actualizar_frase_aleatoria()
 
-    def on_button_pressed(self, event: Button.Pressed) -> None:
+    async def on_button_pressed(self, event: Button.Pressed) -> None:
         # Lógica del botón de salir
         if event.button.id == "goBack":
             self.dismiss()  # Pop screen
+        # Lógica del botón de newquestion
+        if event.button.id == "goBack":
+            await self.obtener_y_actualizar_frase_aleatoria()
         # Lógica del botón submit
         if event.button.id == "submit":
             text = self.guessinput.value
