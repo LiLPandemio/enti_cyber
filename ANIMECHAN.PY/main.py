@@ -168,7 +168,7 @@ class MyFuckingScreen(App):
         self.close_button = Button("Salir", classes="danger", id="close")
 
         # Creando un elemento static al que hacer update
-        self.frase_aleatoria = Static(id="frase_aleatoria")
+        self.frase_aleatoria = Static(id="frase_aleatoria", classes="text")
         self.frase_aleatoria.update("Loading...")
         # Creación de los objetos
         yield Label("Bienvenido a Breaking Bad Guesser", id="hello")
