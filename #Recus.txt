@@ -1,6 +1,6 @@
 #Recus
 11JUN Rafa
-	 	🕑[Cyber-M01UF4] Recuperación: Documentación de toda la UF 
+	 	✅[Cyber-M01UF4] Recuperación: Documentación de toda la UF 
 	 	▶️[Recuperación] Por Osiris y por APIs
 	 	✅[Recuperación] Evil Corp. UNIVERSE (Ejercicio final)  [Unificada y con mejor estructura, haz los primary keys en la propia tabla]
 			✅Unificar
@@ -8,8 +8,8 @@
 			✅Primary Keys en la def del a tabla
 
 08JUN Oriol ciberseg [Seguimiento por whatsapp]
-		❌Seg activa y acceso remoto
-		❌Cortafuegos y servers intermediarios
+		✅Seg activa y acceso remoto
+		▶️Cortafuegos y servers intermediarios
 		❌Alta disponibilidad
 
 Pau Garcia Gonzalvez
