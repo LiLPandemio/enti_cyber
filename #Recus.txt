@@ -1,7 +1,7 @@
 #Recus
 11JUN Rafa
 	 	🕑[Cyber-M01UF4] Recuperación: Documentación de toda la UF 
-	 	❌[Recuperación] Por Osiris y por APIs
+	 	▶️[Recuperación] Por Osiris y por APIs
 	 	✅[Recuperación] Evil Corp. UNIVERSE (Ejercicio final)  [Unificada y con mejor estructura, haz los primary keys en la propia tabla]
 			✅Unificar
 			✅Reestructurar
