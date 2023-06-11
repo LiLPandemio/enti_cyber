@@ -8,6 +8,7 @@ import re
 from api import get_4chan_boards, get_board_threads
 import itertools
 from bs4 import BeautifulSoup
+from textual.events import MouseEvent
 
 def clean_html(html):
     soup = BeautifulSoup(html, 'html.parser')
@@ -26,8 +27,6 @@ class displayBoardScreen(Screen):
         
         yield DataTable()
 
-        
-        
         yield Button("Back", id="goBack", classes="danger")  # Example button widget
 
     async def on_mount(self) -> None:
@@ -42,17 +41,29 @@ class displayBoardScreen(Screen):
         table.fixed_columns = 1
         table.cursor_type = "row"
         table.zebra_stripes = True
+        table.on_click = self.on_table_click
+    def on_table_click(self, event: MouseEvent):
+        # Verifica si fue un doble clic
+        if event.clicks == 2:
+            # Obtén el número de post (id) de la fila activada
+            post_id = event.row_data[0]
 
+            # Abre la pantalla displayThreadScreen y pasa el parámetro 'post_id'
+            Screen.push_screen(displayThreadScreen(post_id))
     def on_button_pressed(self, event):
         # Lógica del botón de salir
         if event.button.id == "goBack":
             self.dismiss()  # Pop screen
 
+
+    
 class displayThreadScreen(Screen):
     CSS_PATH = "main.css"
 
     def compose(self) -> ComposeResult:
+        yield Label(f"Watching thread {self.title}", id="welcome")  # Display the board name
         self.close_button = Button("Salir", classes="danger", id="close")
+
 
 
 class MainScreen(App):
@@ -65,6 +76,9 @@ class MainScreen(App):
 
         for board in self.boards:
             self.buttons.append(Button(board, id=f"board_{board}"))
+
+    async def on_mount(self) -> None:
+        self.manager = self.create_manager()
 
     def compose(self) -> ComposeResult:
         yield Label("Bienvenido a 4chan, selecciona un board", id="welcome")
