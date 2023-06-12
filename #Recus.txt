@@ -15,16 +15,16 @@
 				✅Pràctica 1 Firewalls IpTables 
 				✅Pràctica 2 Firewalls IPTables 
 				✅Test de Firewalls i Iptables
-			▶️UF4:
-				▶️Pràctica 1 Containers-Docker
-				▶️Pràctica 2 Containers-Docker, (Volums i xarxes)
+			✅UF4:
+				✅Pràctica 1 Containers-Docker
+				✅Pràctica 2 Containers-Docker, (Volums i xarxes)
 
 		CiberSeguretat i Hacking ètic:
-			❌UF1:
-				❌Pràctica John the ripper
-			❌UF2:
-				❌Practica SQL injection
+			⚠️UF1:
+				⚠️Pràctica John the ripper
+			▶️UF2:
+				▶️Practica SQL injection
 				❌Report recopilació de eines i tècniques utilitzades en el curs o que consideris més útils del que dominis.
 
 Pau Garcia Gonzalvez
-		✅[Esperando aprobacion] Disseny Modular
+		✅ Disseny Modular
