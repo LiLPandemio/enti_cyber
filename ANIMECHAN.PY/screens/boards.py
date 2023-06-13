@@ -8,6 +8,17 @@ from screens.thread import ThreadScreen
 from api import get_board_threads
 
 def clean_html(html):
+    """
+    Limpia el texto HTML eliminando las etiquetas y devuelve el texto sin formato.
+
+    Args:
+    - html: El texto HTML a limpiar.
+
+    Returns:
+    - El texto sin formato limpio.
+
+    Utiliza el módulo 'BeautifulSoup' para parsear y manipular el HTML.
+    """
     soup = BeautifulSoup(html, 'html.parser')
     text = soup.get_text()
     return text

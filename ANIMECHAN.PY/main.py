@@ -13,6 +13,7 @@ class MainScreen(App):
     CSS_PATH = "main.css"
 
     def __init__(self, boards):
+    
         super().__init__()
         self.boards = boards
         self.buttons = []
@@ -22,14 +23,33 @@ class MainScreen(App):
             self.buttons.append(Button(board, id=f"board_{board}"))
 
     def compose(self) -> ComposeResult:
-        # Componer la interfaz de usuario
+        """
+        Componer la interfaz de usuario de la pantalla.
+
+        Esta función se llama automáticamente para generar los elementos de la interfaz
+        de usuario de la pantalla.
+
+        Retorna:
+        - Los elementos que conforman la interfaz de usuario de la pantalla.
+        """
         yield Label("Bienvenido a 4chan, selecciona un board", id="welcome")
 
         for button in self.buttons:
             yield button
 
     def on_button_pressed(self, event):
-        # Manejar eventos de botón presionado
+        """
+        Manejar eventos de botón presionado.
+
+        Argumentos:
+        - event: El objeto de evento que contiene información sobre el evento.
+
+        Esta función se llama automáticamente cuando se presiona un botón en la pantalla.
+        Permite manejar diferentes acciones en función del botón presionado.
+
+        En este caso, se verifica si se ha presionado el botón "close" y, si es así,
+        se llama al método 'dismiss' para cerrar la pantalla.
+        """
         if event.button.id.startswith("board_"):
             board = event.button.id.split("_")[1]
             print(f"Botón {board} presionado")
