@@ -5,7 +5,7 @@ import asyncio
 import httpx
 import random
 import re
-from api import get_4chan_boards, get_board_threads
+from api import get_4chan_boards, get_board_threads, get_thread_by_id
 import itertools
 from bs4 import BeautifulSoup
 from textual.events import MouseEvent
@@ -65,9 +65,27 @@ class displayBoardScreen(Screen):
 class displayThreadScreen(Screen):
     CSS_PATH = "main.css"
 
+    def __init__(self, thread):
+        super().__init__()
+        self.thread = thread
+        self._app = None
+
+    def set_app(self, app):
+        self._app = app
+
     def compose(self) -> ComposeResult:
-        yield Label(f"Watching thread NOMBRE", id="welcome")  # Display the board name
-        self.close_button = Button("Salir", classes="danger", id="close")
+        yield Label(f"Watching thread {self.thread}", id="welcome")  # Display the thread id
+        yield Button("Salir", classes="danger", id="close")  # Example button widget
+
+    async def on_mount(self) -> None:
+        self.messages = await get_thread_by_id(self.thread)
+        self.log(self.messages)
+
+    def on_button_pressed(self, event):
+        self.log(f"event.button.id: {event.button.id}")  # Add this line for debugging
+        if event.button.id == "close":
+            self.dismiss()  # Pop screen
+
 
 
 

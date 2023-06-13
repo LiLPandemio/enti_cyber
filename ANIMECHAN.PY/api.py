@@ -33,6 +33,16 @@ async def get_board_threads(board):
         print(f"Error: Failed to fetch threads for board /{board}/")
         return []
 
+async def get_thread_by_id(thread_id):
+    url = f"https://a.4cdn.org/po/thread/{thread_id}.json"
+    url = f"https://a.4cdn.org/po/thread/570368.json"
+    response = requests.get(url)
+
+    if response.status_code == 200:
+        thread = response.json()
+        return thread
+    else:
+        print(f"Error al obtener el hilo. Código de estado: {response.status_code}")
 
 
 
