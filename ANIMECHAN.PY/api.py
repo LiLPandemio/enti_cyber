@@ -44,7 +44,8 @@ async def get_thread_by_id(thread_id):
     else:
         print(f"Error al obtener el hilo. Código de estado: {response.status_code}")
 
-
+async def get_4chan_boards_async():
+    return await get_4chan_boards()
 
 # # Ejemplo de uso
 # board = "g"  # Tablero /g/ (Tecnología) de 4chan
