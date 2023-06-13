@@ -21,12 +21,13 @@ class displayBoardScreen(Screen):
     def __init__(self, board):
         super().__init__()
         self.board = board
+        self._app = None
+
+    def set_app(self, app):
+        self._app = app
 
     def compose(self) -> ComposeResult:
         yield Label(f"Welcome to {self.board} board!", id="welcome")  # Display the board name
-        yield Label("")  # Display the board name
-        yield Button("LAUNCH!", id="launcher")  # Example button widget
-        yield Label("")  # Display the board name
         yield DataTable()
         yield Button("Back", id="goBack", classes="danger")  # Example button widget
 
@@ -47,19 +48,17 @@ class displayBoardScreen(Screen):
     def on_data_table_row_selected(self, event: MouseEvent):
         row_index = event.cursor_row
         selected_post_no = self.threads[row_index]["no"]  # Access the selected post from the list
-
         # Do something with the selected post
         self.log(f"Selected Post: {selected_post_no}")
-
-
+        #
+        #   AQUI HA DE PUSHEAR LA PANTALLA displayThreadScreen(selected_post_no)
+        #
+        self.app.push_screen(displayThreadScreen(selected_post_no))
 
     def on_button_pressed(self, event):
         self.log(f"event.button.id: {event.button.id}")  # Agregar esta línea para depurar
-        # Lógica del botón de salir
         if event.button.id == "goBack":
             self.dismiss()  # Pop screen
-        if event.button.id == "launcher":
-            self.log("ESTO ES UNA PRUEBA")
 
 
     
@@ -67,7 +66,7 @@ class displayThreadScreen(Screen):
     CSS_PATH = "main.css"
 
     def compose(self) -> ComposeResult:
-        yield Label(f"Watching thread {self.title}", id="welcome")  # Display the board name
+        yield Label(f"Watching thread NOMBRE", id="welcome")  # Display the board name
         self.close_button = Button("Salir", classes="danger", id="close")
 
 
@@ -94,8 +93,9 @@ class MainScreen(App):
         if event.button.id.startswith("board_"):
             board = event.button.id.split("_")[1]
             print(f"Botón {board} presionado")
-            # Abrir displayBoardScreen y pasar el parámetro 'board'
-            self.push_screen(displayBoardScreen(board))
+            display_screen = displayBoardScreen(board)
+            display_screen.set_app(self)  # Establecer 'app' después de crear la instancia
+            self.push_screen(display_screen)
 
 
 async def get_4chan_boards_async():
